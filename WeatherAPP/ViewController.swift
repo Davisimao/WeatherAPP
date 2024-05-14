@@ -10,9 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private lazy var CustomView : UIView={
+    private lazy var backgroundView : UIImageView={
+        let Imageview = UIImageView(frame: .zero)
+        Imageview.image = UIImage(named:"Background")
+        Imageview.contentMode = .scaleAspectFill
+        Imageview.translatesAutoresizingMaskIntoConstraints = false
+        return Imageview
+    }()
+    
+    
+    private lazy var headerView: UIView={
         let view = UIView(frame: .zero)
-        view.backgroundColor = .black
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 20
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -20,6 +30,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         setupView()
         
@@ -34,19 +45,21 @@ class ViewController: UIViewController {
     }
     
     private func setHyerachy(){
-        view.addSubview(CustomView)
+        view.addSubview(headerView)
+        view.addSubview(backgroundView)
+        
     }
     
     
     private func setContraints(){
         NSLayoutConstraint.activate([
-            CustomView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 100),
+            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             
-            CustomView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant:50),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             
-            CustomView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -50),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            CustomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant:-100),
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
         ])
     }
