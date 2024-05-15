@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         view.addSubview(headerView)
         view.addSubview(backgroundView)
         
+        
     }
     
     
